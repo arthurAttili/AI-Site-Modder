@@ -2,6 +2,8 @@
 
 Extensão Chrome (Manifest V3) que edita qualquer elemento de qualquer site em linguagem natural, pelo botão direito.
 
+Feita pela [bee6](https://www.bee6.com.br/?utm_source=github&utm_medium=readme&utm_campaign=aisiteeditor). Serve para testar ajuste de layout e de texto direto na página, antes de mexer no código. Se quiser algo parecido construído para a sua operação, [fale com a bee6](https://www.bee6.com.br/?utm_source=github&utm_medium=readme&utm_campaign=aisiteeditor).
+
 ## O que faz
 
 Clique com o botão direito em qualquer elemento de qualquer página, escreva o que você quer mudar (cor, texto, tamanho, o que for) e a extensão traduz o pedido em alterações reais no DOM daquela página, na hora. Tudo fica registrado no Console, é possível desfazer, e as alterações podem virar um preset reaplicável no site.
@@ -79,6 +81,8 @@ Nenhum outro pedaço da página é lido ou transmitido: nada fora dos elementos 
 
 As chaves de API ficam apenas em `chrome.storage.local`, no seu computador, e são usadas exclusivamente para chamar o endpoint do provedor escolhido — a extensão não tem servidor próprio nem telemetria.
 
+Os links para o site da bee6 (logo no cabeçalho e assinatura no rodapé) são links comuns: só abrem quando você clica. As fontes da interface (Archivo e Staatliches) vão dentro da extensão, então nada é baixado do Google Fonts.
+
 ## Limitações
 
 - **SPAs que re-renderizam** podem perder as alterações aplicadas quando o framework substitui o DOM — nesse caso é preciso reaplicar o pedido (ou o preset).
@@ -142,4 +146,12 @@ Sem build step: JS puro (ES modules), Node 24, testes com `node --test` e `jsdom
 
 ## Licença
 
-MIT — veja o arquivo `LICENSE`.
+MIT, veja o arquivo `LICENSE`.
+
+As fontes em `fonts/` (Archivo e Staatliches) são distribuídas sob a SIL Open Font License 1.1. Os textos das licenças estão em `fonts/OFL-Archivo.txt` e `fonts/OFL-Staatliches.txt`.
+
+O nome e o logo da bee6 são marcas da bee6 e não entram na licença MIT.
+
+---
+
+Um projeto [bee6](https://www.bee6.com.br/?utm_source=github&utm_medium=readme&utm_campaign=aisiteeditor).

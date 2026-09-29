@@ -215,6 +215,32 @@ async function loadLibs() {
 }
 
 // ---------------------------------------------------------------------------
+// Fontes da bee6 para o painel. @font-face dentro de shadow DOM é ignorado,
+// então as fontes entram no `document.fonts` da página, com nomes prefixados
+// ("bee6 …") para não colidir com as do site. Falhou (CSP de fonte, página
+// sem FontFace)? O painel cai para Arial e segue funcionando.
+// ---------------------------------------------------------------------------
+
+let brandFontsLoaded = false;
+
+function loadBrandFonts() {
+  if (brandFontsLoaded) return;
+  brandFontsLoaded = true;
+  try {
+    const faces = [
+      new FontFace("bee6 Archivo", `url(${chrome.runtime.getURL("fonts/archivo.woff2")}) format("woff2")`, { weight: "300 700", display: "swap" }),
+      new FontFace("bee6 Staatliches", `url(${chrome.runtime.getURL("fonts/staatliches.woff2")}) format("woff2")`, { weight: "400", display: "swap" }),
+    ];
+    for (const face of faces) {
+      document.fonts.add(face);
+      face.load().catch(() => {});
+    }
+  } catch {
+    // Sem fontes da marca: fallback Arial já está nas stacks do CSS.
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Highlight de seleção — `[data-aise-id]` nunca conta como alteração e nunca
 // é logado; é só apresentação.
 // ---------------------------------------------------------------------------
@@ -246,6 +272,7 @@ function currentState() {
 
 function ensurePanel() {
   if (panel) return panel;
+  loadBrandFonts();
   panel = panelFactory(document, {
     onSubmit: (text) => submitRequest(text),
     onUndo: (id) => doUndo(id),

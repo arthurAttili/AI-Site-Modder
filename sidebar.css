@@ -1,38 +1,7 @@
-/* sidebar.css — visual compacto de DevTools para a página sidebar.html.
-   Sem recursos externos; segue `prefers-color-scheme` porque o painel do
-   DevTools herda o tema (claro/escuro) do próprio DevTools, não do site
-   inspecionado. */
-
-:root {
-  color-scheme: light dark;
-  --aise-bg: #ffffff;
-  --aise-fg: #202124;
-  --aise-fg-muted: #5f6368;
-  --aise-border: rgba(0, 0, 0, 0.14);
-  --aise-surface: rgba(0, 0, 0, 0.04);
-  --aise-surface-hover: rgba(0, 0, 0, 0.08);
-  --aise-accent: #ee8d49;
-  --aise-accent-fg: #1b1b1f;
-  --aise-error-bg: rgba(217, 48, 37, 0.1);
-  --aise-error-fg: #b3261e;
-  --aise-chip-bg: rgba(238, 141, 73, 0.14);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --aise-bg: #202124;
-    --aise-fg: #e8eaed;
-    --aise-fg-muted: #9aa0a6;
-    --aise-border: rgba(255, 255, 255, 0.16);
-    --aise-surface: rgba(255, 255, 255, 0.06);
-    --aise-surface-hover: rgba(255, 255, 255, 0.12);
-    --aise-accent: #ee8d49;
-    --aise-accent-fg: #1b1b1f;
-    --aise-error-bg: rgba(242, 139, 130, 0.16);
-    --aise-error-fg: #f28b82;
-    --aise-chip-bg: rgba(238, 141, 73, 0.2);
-  }
-}
+/* sidebar.css — visual compacto de DevTools para sidebar.html (e base da
+   janela separada, editor.html). Tokens de cor, fontes e a assinatura da
+   bee6 vêm de brand.css (carregado antes): sempre escuro, na identidade
+   da bee6, independente do tema do DevTools. */
 
 * {
   box-sizing: border-box;
@@ -42,9 +11,20 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--aise-bg);
-  color: var(--aise-fg);
-  font: 12px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+}
+
+.aise-brand-head {
+  padding: 10px 10px 8px;
+}
+
+.aise-brand-head .aise-brand-symbol {
+  width: 24px;
+  height: 20px;
+}
+
+.aise-brand-head .aise-brand-name {
+  font-size: 18px;
 }
 
 #root {
@@ -100,9 +80,9 @@ body {
   min-height: 56px;
   resize: vertical;
   padding: 6px;
-  border-radius: 4px;
+  border-radius: 8px;
   border: 1px solid var(--aise-border);
-  background: var(--aise-bg);
+  background: var(--aise-surface);
   color: var(--aise-fg);
   font: inherit;
 }
@@ -122,16 +102,17 @@ body {
   border: 1px solid var(--aise-border);
   background: var(--aise-surface);
   color: var(--aise-fg);
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 4px 9px;
   font: inherit;
+  font-weight: 400;
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, transform 0.12s ease, opacity 0.15s ease;
 }
 
 .aise-btn:hover:not(:disabled) {
   background: var(--aise-surface-hover);
   border-color: var(--aise-accent);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 3px 12px rgba(238, 141, 73, 0.18);
   transform: translateY(-1px);
 }
 
@@ -209,7 +190,8 @@ body {
 
 .aise-history-entry {
   border: 1px solid var(--aise-border);
-  border-radius: 4px;
+  border-radius: 10px;
+  background: var(--aise-surface);
   padding: 6px 7px;
   display: flex;
   flex-direction: column;
@@ -219,7 +201,7 @@ body {
 
 .aise-history-entry:hover {
   border-color: rgba(238, 141, 73, 0.6);
-  background: var(--aise-surface);
+  background: var(--aise-surface-hover);
 }
 
 .aise-history-entry-undone {

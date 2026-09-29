@@ -1,0 +1,22 @@
+/* fonts/fonts.css — fontes da identidade bee6, empacotadas com a extensão
+   (subconjunto latin, cobre o português). Nada é buscado no Google Fonts:
+   a extensão não faz requisição fora do provedor de IA.
+   Famílias com prefixo "bee6" para não colidir com uma "Archivo" do site.
+   O painel dentro da página registra as mesmas fontes via FontFace no
+   content.js, porque @font-face não funciona dentro de shadow DOM. */
+
+@font-face {
+  font-family: "bee6 Archivo";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("archivo.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "bee6 Staatliches";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("staatliches.woff2") format("woff2");
+}

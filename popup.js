@@ -6,12 +6,14 @@
 
 import { getPresets, updatePreset, deletePreset } from "./lib/storage.js";
 import { createPopupView } from "./lib/ui/popup-view.js";
+import { mountBrand } from "./lib/ui/brand.js";
 import { buildPresetReport } from "./lib/report.js";
 import { copyText } from "./lib/ui/clipboard.js";
 
 const UNEDITABLE_TEXT = "Esta página não pode ser editada";
 
 const root = document.getElementById("root");
+mountBrand(document, root);
 const view = createPopupView(document, root, {
   onPickElement,
   onToggleOriginal,

@@ -1,37 +1,5 @@
-/* options.css — visual da página de Opções (Task 14). Sem recursos
-   externos; segue `prefers-color-scheme` porque a página roda fora do site
-   inspecionado, nos mesmos moldes de popup.css. */
-
-:root {
-  color-scheme: light dark;
-  --aise-bg: #ffffff;
-  --aise-fg: #202124;
-  --aise-fg-muted: #5f6368;
-  --aise-border: rgba(0, 0, 0, 0.14);
-  --aise-surface: rgba(0, 0, 0, 0.04);
-  --aise-surface-hover: rgba(0, 0, 0, 0.08);
-  --aise-accent: #ee8d49;
-  --aise-accent-fg: #1b1b1f;
-  --aise-error-bg: rgba(217, 48, 37, 0.1);
-  --aise-error-fg: #b3261e;
-  --aise-ok-fg: #1e8e3e;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --aise-bg: #202124;
-    --aise-fg: #e8eaed;
-    --aise-fg-muted: #9aa0a6;
-    --aise-border: rgba(255, 255, 255, 0.16);
-    --aise-surface: rgba(255, 255, 255, 0.06);
-    --aise-surface-hover: rgba(255, 255, 255, 0.12);
-    --aise-accent: #ee8d49;
-    --aise-accent-fg: #1b1b1f;
-    --aise-error-bg: rgba(242, 139, 130, 0.16);
-    --aise-error-fg: #f28b82;
-    --aise-ok-fg: #81c995;
-  }
-}
+/* options.css — visual da página de Opções. Tokens de cor, fontes e a
+   assinatura da bee6 vêm de brand.css (carregado antes). */
 
 * {
   box-sizing: border-box;
@@ -41,9 +9,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background: var(--aise-bg);
-  color: var(--aise-fg);
-  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
 }
 
 /* O atributo hidden precisa vencer o display:flex das seções. */
@@ -51,10 +17,29 @@ body {
   display: none !important;
 }
 
+.aise-brand-head {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 16px 14px;
+}
+
+.aise-brand-head .aise-brand-symbol {
+  width: 40px;
+  height: 33px;
+}
+
+.aise-brand-head .aise-brand-name {
+  font-size: 30px;
+}
+
+.aise-brand-foot {
+  padding: 0 16px 32px;
+}
+
 #root {
   display: flex;
   justify-content: center;
-  padding: 32px 16px 80px;
+  padding: 8px 16px 40px;
 }
 
 .aise-options {
@@ -66,13 +51,17 @@ body {
 }
 
 .aise-options-title {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 700;
   margin: 0 0 4px;
 }
 
 .aise-provider-section {
   border: 1px solid var(--aise-border);
-  border-radius: 8px;
+  border-radius: 16px;
+  background: var(--aise-surface);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -81,7 +70,8 @@ body {
 
 .aise-provider-section h2 {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .aise-field {
@@ -142,16 +132,17 @@ select option {
   border: 1px solid var(--aise-border);
   background: var(--aise-surface);
   color: var(--aise-fg);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 7px 14px;
   font: inherit;
+  font-weight: 400;
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease, transform 0.12s ease, opacity 0.15s ease;
 }
 
 .aise-btn:hover:not(:disabled) {
   background: var(--aise-surface-hover);
   border-color: var(--aise-accent);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 3px 12px rgba(238, 141, 73, 0.18);
   transform: translateY(-1px);
 }
 

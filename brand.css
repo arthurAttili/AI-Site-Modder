@@ -1,0 +1,120 @@
+/* brand.css — identidade bee6 compartilhada pelas páginas da extensão
+   (popup, Opções, janela separada, sidebar do DevTools): tokens de cor
+   escuros (Liquid Glass), fontes locais, cabeçalho com o símbolo e a
+   assinatura "feito pela bee6". Cada página carrega fonts/fonts.css, este
+   arquivo e depois o seu CSS próprio. O painel dentro da página usa as
+   mesmas cores em lib/ui/styles.js. */
+
+:root {
+  color-scheme: dark;
+  --aise-bg: #000000;
+  --aise-fg: #d5d5ce;
+  --aise-fg-muted: rgba(213, 213, 206, 0.64);
+  --aise-border: rgba(255, 255, 255, 0.1);
+  --aise-surface: rgba(255, 255, 255, 0.04);
+  --aise-surface-hover: rgba(255, 255, 255, 0.09);
+  --aise-accent: #ee8d49;
+  --aise-accent-fg: #000000;
+  --aise-accent-2: #396e82;
+  --aise-error-bg: rgba(184, 54, 79, 0.18);
+  --aise-error-fg: #f39aab;
+  --aise-ok-fg: #8fd0a8;
+  --aise-chip-bg: rgba(238, 141, 73, 0.18);
+  --aise-font-body: "bee6 Archivo", "Archivo", Arial, sans-serif;
+  --aise-font-display: "bee6 Staatliches", "Staatliches", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Luz laranja/azul difusa atrás do vidro, como no site da bee6. */
+  background:
+    radial-gradient(120% 60% at 100% 0%, rgba(238, 141, 73, 0.14), transparent 60%),
+    radial-gradient(90% 50% at 0% 100%, rgba(57, 110, 130, 0.16), transparent 60%),
+    var(--aise-bg);
+  color: var(--aise-fg);
+  font: 300 13px/1.45 var(--aise-font-body);
+}
+
+/* Cabeçalho: símbolo da bee6 + nome da extensão em Staatliches. */
+.aise-brand-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--aise-border);
+}
+
+.aise-brand-symbol {
+  display: inline-flex;
+  width: 30px;
+  height: 25px;
+}
+
+.aise-brand-symbol svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.aise-brand-name {
+  font-family: var(--aise-font-display);
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--aise-fg);
+}
+
+.aise-brand-name b {
+  font-weight: 400;
+  color: var(--aise-accent);
+}
+
+/* Assinatura "feito pela bee6" — link para o site. */
+.aise-bee6 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--aise-fg-muted);
+  font-size: 11px;
+  text-decoration: none;
+  padding: 3px 6px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.aise-bee6-logo {
+  display: inline-flex;
+  color: #ffffff;
+}
+
+.aise-bee6-logo svg {
+  display: block;
+  height: 16px;
+  width: auto;
+}
+
+.aise-bee6:hover {
+  color: var(--aise-fg);
+  background: var(--aise-surface-hover);
+}
+
+.aise-bee6:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--aise-accent);
+}
+
+.aise-brand-foot {
+  display: flex;
+  justify-content: center;
+  padding: 4px 0 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aise-bee6 { transition: none; }
+}

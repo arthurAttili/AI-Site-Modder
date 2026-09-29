@@ -7,6 +7,7 @@
 // `document`/`window`/`chrome` livremente.
 
 import { createSidebarView } from "./lib/ui/sidebar-view.js";
+import { mountBrand } from "./lib/ui/brand.js";
 import { createPortClient, applyReply, runAction, requestState } from "./lib/port-client.js";
 import { copyText } from "./lib/ui/clipboard.js";
 
@@ -17,6 +18,7 @@ const INSPECTED_LABEL_EVAL =
 const MARK_SELECTED_EVAL = "$0&&$0.setAttribute('data-aise-pick','1')";
 
 const root = document.getElementById("root");
+mountBrand(document, root);
 const view = createSidebarView(document, root, {
   onSend,
   onUseSelected,

@@ -5,8 +5,10 @@
 
 import { getSettings, saveSettings } from "./lib/storage.js";
 import { createOptionsView } from "./lib/ui/options-view.js";
+import { mountBrand } from "./lib/ui/brand.js";
 
 const root = document.getElementById("root");
+mountBrand(document, root);
 const view = createOptionsView(document, root, {
   onSave,
   onTest,

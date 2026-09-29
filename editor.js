@@ -7,6 +7,7 @@
 // `document`/`window`/`chrome` livremente.
 
 import { createSidebarView } from "./lib/ui/sidebar-view.js";
+import { mountBrand } from "./lib/ui/brand.js";
 import { createPortClient, applyReply, runAction, requestState } from "./lib/port-client.js";
 import { copyText } from "./lib/ui/clipboard.js";
 
@@ -16,6 +17,7 @@ const params = new URLSearchParams(location.search);
 const tabId = Number.parseInt(params.get("tabId"), 10);
 
 const root = document.getElementById("root");
+mountBrand(document, root);
 const view = createSidebarView(
   document,
   root,
