@@ -216,7 +216,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
   if (info.menuItemId !== CONTEXT_MENU_ID || !tab || tab.id == null) return;
 
   if (!isInjectable(tab.url)) {
-    console.warn(`[aiSiteEditor] não é possível injetar o editor em: ${tab.url}`);
+    console.warn(`[AI Site Modder] não é possível injetar o editor em: ${tab.url}`);
     return;
   }
 
@@ -232,7 +232,7 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       await chrome.scripting.executeScript({ target: { tabId: tab.id, frameIds: [info.frameId] }, files: ["content.js"] });
       await openEditor();
     } catch (err) {
-      console.warn("[aiSiteEditor] falha ao abrir o editor:", err);
+      console.warn("[AI Site Modder] falha ao abrir o editor:", err);
       warnBadge(tab.id);
     }
   }
